@@ -68,7 +68,7 @@ export default function HomePage() {
               en de laatste fases van mijn HBO-ICT opleiding zijn aangebroken.{" "}
               <span className="font-semibold text-[#FE26BD]">
                 In september start ik met mijn afstudeerproject!
-              </span>
+              </span>{" "}
               Ter voorbereiding op mijn afstuderen ben ik per direct op zoek
               naar een project waarin ik samen met een opdrachtgever werk aan
               een digitaal eindproduct.
