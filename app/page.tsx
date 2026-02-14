@@ -2,8 +2,11 @@
 
 import { motion } from "motion/react";
 import { useEffect } from "react";
+import Image from "next/image";
 
 export default function HomePage() {
+  const submissionsOpen = false;
+
   useEffect(() => {
     // Laad het Tally popup script
     const script = document.createElement("script");
@@ -125,7 +128,6 @@ export default function HomePage() {
               </li>
             </ul>
           </motion.div>
-
           {/* 2. Denk bijvoorbeeld aan */}
           <motion.div
             className="bg-[#E8C4FF] rounded-2xl p-8 shadow-md hover:shadow-xl transition-shadow duration-300 text-[#3B0A3E]"
@@ -174,7 +176,6 @@ export default function HomePage() {
               ))}
             </motion.ul>
           </motion.div>
-
           {/* 3. Wat kun je van mij verwachten */}
           <motion.div
             className="bg-[#D0A2FF] rounded-2xl p-8 shadow-md hover:shadow-xl transition-shadow duration-300 text-[#3B0A3E]"
@@ -226,23 +227,60 @@ export default function HomePage() {
           </motion.div>
 
           {/* Contact knop */}
-          <motion.button
-            className="bg-gradient-to-br from-[#D326FE] to-[#9F1ED9] rounded-xl text-white font-bold text-2xl shadow-lg hover:scale-105 transition-transform py-8 flex items-center justify-center"
-            initial={{ scale: 0.8, opacity: 0 }}
-            animate={{ scale: 1, opacity: 1 }}
-            transition={{
-              delay: 0.5,
-              duration: 0.6,
-              type: "spring",
-              stiffness: 120,
-            }}
-            data-tally-open="A7L05l" // <- Vervang door jouw Tally ID
-            data-tally-width="500"
-            data-tally-emoji-text="👋"
-            data-tally-emoji-animation="wave"
-          >
-            Ik heb interesse!
-          </motion.button>
+          {submissionsOpen ? (
+            <motion.button
+              className="bg-gradient-to-br from-[#D326FE] to-[#9F1ED9] rounded-xl text-white font-bold text-2xl shadow-lg hover:scale-105 transition-transform py-8 flex items-center justify-center"
+              initial={{ scale: 0.8, opacity: 0 }}
+              animate={{ scale: 1, opacity: 1 }}
+              transition={{
+                delay: 0.5,
+                duration: 0.6,
+                type: "spring",
+                stiffness: 120,
+              }}
+              data-tally-open="A7L05l" // <- Vervang door jouw Tally ID
+              data-tally-width="500"
+              data-tally-emoji-text="👋"
+              data-tally-emoji-animation="wave"
+            >
+              Ik heb interesse!
+            </motion.button>
+          ) : (
+            <div className=" relative bg-gradient-to-br from-[#F3E8FF] to-[#E9D5FF] rounded-2xl p-8 shadow-md text-[#3B0A3E]">
+              <h4 className="text-xl font-semibold tracking-tight mb-6">
+                Aanmeldingen zijn gesloten
+              </h4>
+
+              <div className="text-[15.5px] leading-relaxed text-[#3B0A3E]/90 space-y-4">
+                <p>
+                  Voor dit traject zijn inmiddels voldoende aanmeldingen
+                  ontvangen.
+                </p>
+
+                <p>
+                  Vanaf september 2026 sta ik open voor een afstudeerstage of
+                  werkplek.
+                </p>
+
+                <p>Bedankt voor alle inzendingen!</p>
+              </div>
+
+              <a
+                href="https://www.linkedin.com/in/nairobi-goeloe"
+                target="_blank"
+                rel="noopener noreferrer"
+                className="absolute bottom-6 right-6 hover:scale-110 transition-transform"
+              >
+                <Image
+                  src="/linkedin.png"
+                  alt="LinkedIn profiel"
+                  width={40}
+                  height={40}
+                  className="object-contain"
+                />
+              </a>
+            </div>
+          )}
         </div>
       </div>
     </div>
